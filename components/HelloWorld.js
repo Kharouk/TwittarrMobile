@@ -11,7 +11,7 @@ export default class HelloWorld extends Component {
   }
 
   showInformation = () => {
-    this.setState({ text: "🦟", display: true });
+    this.setState({ display: true });
   };
 
   render() {
@@ -23,7 +23,7 @@ export default class HelloWorld extends Component {
           onChangeText={text => this.setState({ text })}
         />
         <Button title="Send" onPress={this.showInformation} />
-        {this.state.display == true && <Text>Message Sent.</Text>}
+        {this.state.display == true && <Text>Hi</Text>}
       </View>
     );
   }
