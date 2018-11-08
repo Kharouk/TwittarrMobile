@@ -9,12 +9,20 @@ import {
 } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  peeps: {
     justifyContent: "center",
     textAlign: "center",
     fontSize: 20,
+    paddingTop: 20,
     alignItems: "center"
+  },
+  textBody: {
+    fontSize: 30,
+    color: "red"
+  },
+  textUser: {
+    textDecorationLine: "underline",
+    color: "blue"
   }
 });
 const URL = "https://chitter-backend-api.herokuapp.com/peeps";
@@ -56,8 +64,10 @@ class Peeps extends Component {
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => (
-            <Text>
-              {item.body} by {item.user.handle} at {item.created_at}
+            <Text style={styles.peeps}>
+              <Text style={styles.textBody}>{item.body} </Text>
+              by <Text style={styles.textUser}>{item.user.handle} </Text>
+              at <Text style={styles.textDate}>{item.created_at}</Text>
             </Text>
           )}
           keyExtractor={({ id }, index) => id.id}

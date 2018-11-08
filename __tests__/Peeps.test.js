@@ -10,4 +10,9 @@ describe("Testing Peep Component", () => {
     const tree = renderer.create(<Peeps />).getInstance();
     expect(tree).toBeTruthy();
   });
+
+  it("create snapshot", () => {
+    const tree = renderer.create(<Peeps />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
