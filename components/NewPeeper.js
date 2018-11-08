@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-import { Button, Text, View, TextInput } from "react-native";
+import { Button, Text, View, TextInput, FlatList } from "react-native";
 
 const URL = "https://chitter-backend-api.herokuapp.com/users";
-
+let user, password;
 class NewPeeper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      user: "",
+      password: "",
+      successSignUp: false
     };
+    this.createNewUser = this.createNewUser.bind(this);
   }
 
-  createNewUser(user, password) {
-    fetch(URL, {
+  createNewUser() {
+    return fetch(URL, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -20,32 +23,49 @@ class NewPeeper extends Component {
       },
       body: JSON.stringify({
         user: {
-          handle: user,
-          password: password
+          handle: this.state.user,
+          password: this.state.password
         }
       })
     });
   }
 
   render() {
-    return (
-      <View>
-        <Text>Make a New Account!</Text>
-        <TextInput
-          placeholder="name"
-          onChangeText={text => this.setState({ name })}
-        />
-        <TextInput
-          placeholder="password"
-          onChangeText={text => this.setState({ password })}
-        />
-        <Button
-          onPress={this.createNewUser(this.state.name, this.state.password)}
-          title="Press to submit"
-          color="#841584"
-        />
-      </View>
-    );
+    if (this.state.successSignUp) {
+      return (
+        <View>
+          <FlatList
+            data={this.state.data}
+            renderItem={({ item }) => (
+              <Text>
+                <Text> {item} </Text>
+              </Text>
+            )}
+            keyExtractor={({ id }, index) => id.id}
+          />
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <Text>Make a New Account!</Text>
+          <TextInput
+            placeholder="name"
+            on
+            onChangeText={text => this.setState({ user: text })}
+          />
+          <TextInput
+            placeholder="password"
+            onChangeText={text => this.setState({ password: text })}
+          />
+          <Button
+            onPress={this.createNewUser}
+            title="Press to submit"
+            color="#841584"
+          />
+        </View>
+      );
+    }
   }
 }
 

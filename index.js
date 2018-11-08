@@ -6,4 +6,4 @@ import Peeps from "./components/Peeps";
 import HelloWorld from "./components/HelloWorld";
 import { name as appName } from "./app.json";
 
-AppRegistry.registerComponent(appName, () => Peeps);
+AppRegistry.registerComponent(appName, () => App);
