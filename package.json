@@ -7,17 +7,24 @@
     "test": "jest"
   },
   "dependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-react-16-adapter-setup": "^0.1.0",
+    "jest-enzyme": "^7.0.1",
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.57.4",
-    "react-navigation": "^2.18.2"
+    "react-native": "0.57.4"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "jest": "23.6.0",
-    "metro-react-native-babel-preset": "0.49.0",
+    "metro-react-native-babel-preset": "^0.49.0",
+    "react-dom": "^16.6.1",
     "react-test-renderer": "16.6.0-alpha.8af6728"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   }
 }
