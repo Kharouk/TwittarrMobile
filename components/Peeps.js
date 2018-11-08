@@ -17,28 +17,13 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class Peeps extends Component {
+class Peeps extends Component {
   constructor(props) {
     super(props);
     this.state = { isLoading: true };
   }
 
-  componentDidMount() {
-    return fetch("https://chitter-backend-api.herokuapp.com/peeps")
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState(
-          {
-            isLoading: false,
-            dataSource: responseJson
-          },
-          function() {}
-        );
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+  componentDidMount() {}
 
   render() {
     if (this.state.isLoading) {
@@ -50,12 +35,13 @@ export default class Peeps extends Component {
     }
 
     return (
-      <View style={styles.container}>
+      <View>
+        <Text>Check you out.</Text>
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => (
             <Text>
-              {item.body} by "{item.user.handle}" at {item.created_at}
+              {item.body} by {item.user.handle} at {item.created_at}
             </Text>
           )}
           keyExtractor={({ id }, index) => id}
@@ -64,3 +50,5 @@ export default class Peeps extends Component {
     );
   }
 }
+
+export default Peeps;

@@ -14,7 +14,6 @@ describe("HelloWorld  component", () => {
   it("shallow renders", () => {
     const wrapper = shallow(<HelloWorld />);
     const instance = wrapper.instance();
-    console.log(instance);
     expect(instance.state.text).toEqual("Placeholder");
   });
 });
