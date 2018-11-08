@@ -6,10 +6,10 @@ describe("Testing Fetching Peeps", () => {
   });
 
   it("calls Chitter and returns data", () => {
-    fetch.mockResponseOnce(JSON.stringify({ data: "12345" }));
+    fetch.mockResponseOnce(JSON.stringify({ body: "Hello World!" }));
 
     fetchPeeps().then(res => {
-      expect(res.data).toEqual("12345");
+      expect(res.data).toEqual("Hello World!");
     });
   });
 });

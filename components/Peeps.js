@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { fetchPeeps } from "../apiPeeps";
 import {
   FlatList,
   StyleSheet,
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
+const URL = "https://chitter-backend-api.herokuapp.com/peeps";
 
 class Peeps extends Component {
   constructor(props) {
@@ -23,7 +25,21 @@ class Peeps extends Component {
     this.state = { isLoading: true };
   }
 
-  componentDidMount() {}
+  async componentDidMount() {
+    try {
+      const response = await fetch(URL);
+      const responseJson = await response.json();
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson
+        },
+        function() {}
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   render() {
     if (this.state.isLoading) {
@@ -36,7 +52,7 @@ class Peeps extends Component {
 
     return (
       <View>
-        <Text>Check you out.</Text>
+        <Text>Welcome to Chittarr.</Text>
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => (
@@ -44,7 +60,7 @@ class Peeps extends Component {
               {item.body} by {item.user.handle} at {item.created_at}
             </Text>
           )}
-          keyExtractor={({ id }, index) => id}
+          keyExtractor={({ id }, index) => id.id}
         />
       </View>
     );
