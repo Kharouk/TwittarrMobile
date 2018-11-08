@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { fetchPeeps } from "../apiPeeps";
 import {
   FlatList,
   StyleSheet,
