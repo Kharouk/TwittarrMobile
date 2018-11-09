@@ -42,10 +42,6 @@ class SignPeeper extends Component {
           title="Sign Up"
           onPress={() => this.props.navigation.navigate("NewPeeper")}
         />
-        <Button
-          title="Log in"
-          onPress={() => this.props.navigation.navigate("SignPeeper")}
-        />
 
         <LogIn />
 

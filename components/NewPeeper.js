@@ -52,7 +52,6 @@ class NewPeeper extends Component {
           <Text>Make a New Account!</Text>
           <TextInput
             placeholder="name"
-            on
             onChangeText={text => this.setState({ user: text })}
           />
           <TextInput
