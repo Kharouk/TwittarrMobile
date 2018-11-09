@@ -7,9 +7,6 @@ class NewPeeper extends Component {
     super(props);
     this.state = {
       user: "",
-      handle: "",
-      id: "",
-      data: "",
       password: "",
       successSignUp: false
     };
@@ -31,7 +28,9 @@ class NewPeeper extends Component {
           password: this.state.password
         }
       })
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(() => this.props.navigation.navigate("SignPeeper"));
   }
 
   displayConfirmation() {

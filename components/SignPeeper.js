@@ -1,33 +1,10 @@
 import React, { Component } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  Button
-} from "react-native";
+import LogIn from "./logIn";
+import { Text, View, ActivityIndicator, Button, FlatList } from "react-native";
 
-const styles = StyleSheet.create({
-  peeps: {
-    justifyContent: "center",
-    textAlign: "center",
-    fontSize: 20,
-    paddingTop: 20,
-    alignItems: "center"
-  },
-  textBody: {
-    fontSize: 30,
-    color: "red"
-  },
-  textUser: {
-    textDecorationLine: "underline",
-    color: "blue"
-  }
-});
-const URL = "https://chitter-backend-api.herokuapp.com/peeps";
+const URL = "https://chitter-backend-api.herokuapp.com/users";
 
-class Peeps extends Component {
+class SignPeeper extends Component {
   constructor(props) {
     super(props);
     this.state = { isLoading: true };
@@ -70,13 +47,15 @@ class Peeps extends Component {
           onPress={() => this.props.navigation.navigate("SignPeeper")}
         />
 
+        <LogIn />
+
         <FlatList
-          data={this.state.dataSource}
+          data={this.state.dataSource.reverse()}
           renderItem={({ item }) => (
-            <Text style={styles.peeps}>
-              <Text style={styles.textBody}>{item.body} </Text>
-              by <Text style={styles.textUser}>{item.user.handle} </Text>
-              at <Text style={styles.textDate}>{item.created_at}</Text>
+            <Text>
+              <Text>{item.id} </Text>
+              <Text>{item.handle} </Text>
+              <Text />
             </Text>
           )}
           keyExtractor={({ id }, index) => id.id}
@@ -86,4 +65,4 @@ class Peeps extends Component {
   }
 }
 
-export default Peeps;
+export default SignPeeper;
