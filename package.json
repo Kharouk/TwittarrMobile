@@ -10,6 +10,7 @@
     "enzyme": "^3.7.0",
     "enzyme-react-16-adapter-setup": "^0.1.0",
     "jest-enzyme": "^7.0.1",
+    "node-fetch": "^2.2.1",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
     "react-navigation": "^2.18.2"
