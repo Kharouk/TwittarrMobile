@@ -10,7 +10,7 @@ const RootStack = createStackNavigator(
     NewPeeper: NewPeeper
   },
   {
-    initialRouteName: "NewPeeper"
+    initialRouteName: "Home"
   }
 );
 

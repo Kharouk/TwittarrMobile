@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  ActivityIndicator
+  ActivityIndicator,
+  Button
 } from "react-native";
 
 const styles = StyleSheet.create({
@@ -60,6 +61,11 @@ class Peeps extends Component {
     return (
       <View>
         <Text>Welcome to Chittarr.</Text>
+        <Button
+          title="Sign Up"
+          onPress={() => this.props.navigation.navigate("NewPeeper")}
+        />
+
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => (
