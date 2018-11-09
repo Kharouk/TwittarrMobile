@@ -69,6 +69,10 @@ class Peeps extends Component {
           title="Log in"
           onPress={() => this.props.navigation.navigate("SignPeeper")}
         />
+        <Button
+          title="Profile"
+          onPress={() => this.props.navigation.navigate("Profile")}
+        />
 
         <FlatList
           data={this.state.dataSource}

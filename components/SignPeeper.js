@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LogIn from "./logIn";
+import LogIn from "../scripts/logIn";
 import { Text, View, ActivityIndicator, Button, FlatList } from "react-native";
 
 const URL = "https://chitter-backend-api.herokuapp.com/users";

@@ -31,7 +31,6 @@ export default class LogIn extends Component {
   }
 
   postSessionsHandler() {
-    console.log("Hello!");
     return fetch(url, {
       method: "POST",
       headers: {
